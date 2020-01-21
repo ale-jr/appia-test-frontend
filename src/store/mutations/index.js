@@ -13,7 +13,7 @@ export default {
     }
     storage.setItem('user', state.user)
     if (signIn) {
-      router.push(router.currentRoute.query.from)
+      router.push(router.currentRoute.query.from || 'dashboard')
     }
   },
   unsetUser: (state) => {
