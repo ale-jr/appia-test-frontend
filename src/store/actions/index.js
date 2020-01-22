@@ -26,7 +26,6 @@ export default {
     key: 'user',
     mutation: 'setUser',
     commitIf: (user) => {
-      console.log('user.token', user.token)
       return user && !user.token
     } }),
 
