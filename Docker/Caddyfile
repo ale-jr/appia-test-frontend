@@ -1,0 +1,5 @@
+localhost:80 {
+    root /www/app
+    rewrite { to {path} {path}/ /index.html }
+    gzip
+}

@@ -1,0 +1,1 @@
+cd .. && docker container run -d -it -p 80:80 --name=appia-frontend appia-frontend-test
