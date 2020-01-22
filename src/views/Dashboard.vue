@@ -2,7 +2,7 @@
   <div class="root">
     <div class="container-app">
       <h1>Suas medições</h1>
-      <Graph />
+      <Graph :data="measurementsWithDate" />
       <ValueCardsContainer>
       <ValueCard :value="hypoglycemias" unit="Vezes" title="Hipoglicemias" />
       <ValueCard :value="average" unit="mg/dL" title="Média" />
@@ -31,14 +31,23 @@ export default {
   },
   computed: {
     ...mapState(['measurements']),
+    measurementsWithDate () {
+      return this.measurements.map(({ measuredAt, ...measurement }) => {
+        const date = new Date(measuredAt)
+        return {
+          measuredAt: date,
+          ...measurement
+        }
+      })
+    },
     average () {
       return (this.measurements.reduce((total, { measurement }) => total + +measurement, 0) / this.measurements.length).toFixed(1)
     },
     hypoglycemias () {
-      return this.measurements.filter(({ status }) => status === 'HYPOGLICEMIC').length
+      return this.measurements.filter(({ measurement }) => +measurement <= 70).length
     },
     hyperglycemias () {
-      return this.measurements.filter(({ status }) => status === 'HYPERGLICEMIC').length
+      return this.measurements.filter(({ measurement }) => +measurement >= 180).length
     }
   },
   mounted () {
