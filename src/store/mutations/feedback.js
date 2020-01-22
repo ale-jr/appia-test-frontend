@@ -11,8 +11,6 @@ export default {
   },
   setError: (state, { error, tag }) => {
     state.errors[tag] = error
-    // console.log('error', error.graphQLErrors)
-    // console.log('network', error.networkError)
   },
   unsetError: (state, tag) => {
     delete state.errors[tag]

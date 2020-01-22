@@ -36,9 +36,6 @@ const router = new VueRouter({
 router.beforeEach(async (to, from, next) => {
   await store.dispatch('initUserFromLocalStorage')
   const { loggedIn } = store.getters
-
-  console.log(to)
-
   if (to.meta.private && !loggedIn) {
     next({
       name: 'login',
