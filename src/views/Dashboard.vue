@@ -1,5 +1,5 @@
 <template>
-  <div class="root">
+  <div class="root" v-if="measurements.length > 0">
     <div class="container-app">
       <h1>Suas medições</h1>
       <Graph :data="measurementsWithDate" />

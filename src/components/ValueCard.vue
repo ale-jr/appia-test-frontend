@@ -9,11 +9,7 @@
 </template>
 <script>
 export default {
-  props: {
-    value: Number,
-    unit: String,
-    title: String
-  }
+  props: ['value', 'unit', 'title']
 }
 </script>
 <style scoped>
